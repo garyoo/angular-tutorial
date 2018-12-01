@@ -1,0 +1,31 @@
+
+<!--<p>-->
+  <!--{{hero.id}}-->
+  <!--{{hero.name}}-->
+<!--</p>-->
+<!--<div>-->
+  <!--<button (click)="hero.disabled = !hero.disabled">property binding button</button>-->
+<!--</div>-->
+
+<!--<div>-->
+  <!--<div [class.special]="hero.disabled">class binding button</div>-->
+<!--</div>-->
+
+<!--<div>-->
+  <!--<button [style.color]="hero.disabled ? 'red' : 'green'">style binding button</button>-->
+<!--</div>-->
+<!--<div>-->
+  <!--<button (click)="onSave($event);">SAVE</button>-->
+<!--</div>-->
+<!--<div>-->
+  <!--<label>name:-->
+    <!--<input [(ngModel)]="hero.name" placeholder="name">-->
+  <!--</label>-->
+<!--</div>-->
+
+<h2>My Heroes</h2>
+<ul>
+  <li *ngFor="let hero of heroes">
+    <span>{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
