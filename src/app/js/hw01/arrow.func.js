@@ -23,62 +23,62 @@ let books = [
 ];
 
 // 2. books의 type은 무엇인가? 자바스크립트의 타입은 몇가지가 있는가?
-console.warn('2-------------------------------------------------------------------');
-console.log(["string","object","number"])
+console.log('2-------------------------------------------------------------------');
+console.info("array")
 //3. books 배열의 맨 앞쪽에 "ECMAScript 6 길들이기 ", 20000, "나라얀 프루스티", "에이콘출판사" 를 추가하시오
-console.warn('3-------------------------------------------------------------------');
+console.log('3-------------------------------------------------------------------');
 books.unshift({title:"ECMAScript 6 길들이기 ", price: 20000, author: "나라얀 프루스티", publisher: "에이콘출판사"})
 
 
 //4. 방금 맨 앞쪽에 추가한 것을 지우시오,
-console.warn('4-------------------------------------------------------------------');
+console.log('4-------------------------------------------------------------------');
 books.shift()
 
 // 5. 이번에는 books 배열의 맨 뒷쪽에 동일한 객체를 추가하시오.
-console.warn('5-------------------------------------------------------------------');
+console.log('5-------------------------------------------------------------------');
 books.push(books.slice(-1).pop())
 
 // 6. 방금 맨 뒤쪽에 추가한것을 지우시오,
-books.splice(-1)
+let spliceObject = books.splice(-1)
 
 // 7. 이번에는 자바의정석과 안드로이드정복 사이에 삽입하시오.
 console.log('7 -------------------------------------------------------------------');
-
-//console.log(books);
+let index = books.findIndex( (item) => {return (item.title === "안드로이드 정복" ? true : false)})
+console.log(spliceObject)
+books.splice(index,0,spliceObject.pop());
 
 // 8. 방금 삽입한거를 삭제하시오.
 console.log('8 -------------------------------------------------------------------');
-
 //console.log(books);
-
-
+books.slice(index,1)
 // 9. books 배열에서 제목이 자바의 정석인 객체를 찾아서 출력하시오
 console.log('9 -------------------------------------------------------------------');
 var tempBook;
-
+console.log(books.find(book => book.title === '자바의 정석'))
 //console.log(tempBook);
 
 // 10. 제목이 모두의 파이썬인 객체의 배열 인덱스를 찾으시오
 console.log('10 -------------------------------------------------------------------');
-let index;
-
-console.log(index);
-
+console.log(books.findIndex(book => book.title === '모두의 파이썬'))
 // 11. 책의 총 비용을 출력하시오
 console.log('11 -----------------------------------------------');
-var sum = 0;
+let sum = 0;
+sum = books.reduce((acc, cur) => {return acc + cur.price},0);
 
-//console.log('sum:' + sum);
+console.log('sum:' + sum);
 
 // 12. 가격이 3만원이상인것을 모아서 별도의 배열을 만드시오
 console.log('12 -------------------------------------------------------------------');
 var newFilter;
-
-//console.log(newFilter);
+newFilter = books.filter(book => book.price>=3e4)
+console.log(newFilter);
 
 // 13. 제목을 가나다 순서로 소팅한후 제목앞에 소팅된 번호를 붙인 새로운 배열을 생성하시오
 console.log('13 -------------------------------------------------------------------');
 var tempBooks;
+tempBooks = books.sort((acc, cur) => acc.title > cur.title).map((book,idx) => `${idx+1} ${book.title}`)
+console.log(tempBooks)
+
 
 //console.log(tempBooks);
 // [ '1 Angular Essentials',

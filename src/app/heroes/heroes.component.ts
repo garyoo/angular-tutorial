@@ -8,14 +8,10 @@ import { HEROES } from '../mock-heroes';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  /*
-  hero: Hero = {
-    id: 1,
-    name: 'WinStorm'
-  };
-  */
+
   hero: Hero;
   heroes;
+  selectedHero: Hero;
 
   constructor() {
     this.heroes = HEROES;
@@ -28,6 +24,11 @@ export class HeroesComponent implements OnInit {
 
   onSave(event: any) {
     console.log(event);
+  }
+
+  onSelect(hero: Hero): void {
+    console.log(hero)
+    this.selectedHero = hero;
   }
 
 }

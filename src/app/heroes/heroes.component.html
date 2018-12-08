@@ -25,7 +25,8 @@
 
 <h2>My Heroes</h2>
 <ul>
-  <li *ngFor="let hero of heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
     <span>{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
+
