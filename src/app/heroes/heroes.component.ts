@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -13,12 +14,27 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: HeroService, private router: Router) {
+    this.heroService.getHeroes().subscribe(data => {
+      this.heroes = data;
+    });
+
+    this.heroService.refresh$.subscribe(data => {
+      console.log(this.heroes);
+      this.selectedHero = this.heroes.find(item => item.hero_id === data ? true : false);
+    });
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.selectedHero = event.url === '/heroes' ? null : this.selectedHero;
+      }
+    });
+
     this.hero = new Hero(1, 'winstorm');
   }
 
   ngOnInit() {
-    this.heroService.getHeroes().subscribe(data => this.heroes = data);
+
   }
 
   onSave(event: any) {
@@ -26,7 +42,6 @@ export class HeroesComponent implements OnInit {
   }
 
   onSelect(hero: Hero): void {
-    console.log(hero);
     this.selectedHero = hero;
   }
 

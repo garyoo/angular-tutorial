@@ -1,34 +1,9 @@
-
-<!--<p>-->
-  <!--{{hero.id}}-->
-  <!--{{hero.name}}-->
-<!--</p>-->
-<!--<div>-->
-  <!--<button (click)="hero.disabled = !hero.disabled">property binding button</button>-->
-<!--</div>-->
-
-<!--<div>-->
-  <!--<div [class.special]="hero.disabled">class binding button</div>-->
-<!--</div>-->
-
-<!--<div>-->
-  <!--<button [style.color]="hero.disabled ? 'red' : 'green'">style binding button</button>-->
-<!--</div>-->
-<!--<div>-->
-  <!--<button (click)="onSave($event);">SAVE</button>-->
-<!--</div>-->
-<!--<div>-->
-  <!--<label>name:-->
-    <!--<input [(ngModel)]="hero.name" placeholder="name">-->
-  <!--</label>-->
-<!--</div>-->
+<router-outlet></router-outlet>
 
 <h2>My Heroes</h2>
 <ul>
-  <li class="d-flex m-1" *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero===selectedHero">
-    <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}</span>
+  <li class="d-flex m-1" *ngFor="let hero of heroes" routerLink="/heroes/{{hero.hero_id}}" (click)="onSelect(hero)" [class.selected]="hero===selectedHero">
+    <span class="rounded-left p-2 bg-primary text-light">{{hero.hero_id}}</span>
     <div class="rounded-right p-2 bg-light text-dark w-75">{{hero.name}}</div>
   </li>
 </ul>
-
-<app-hero-detail [childHero]="selectedHero"></app-hero-detail>
