@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+li {
+  .bg-light {
+    background-color: #cccccc !important;
+  }
+  &.selected {
+    div {
+    &.bg-light {
+       background-color: #666666 !important;
+     }
+    &.text-dark {
+       color: white !important;
+     }
+    }
+  }
+}
