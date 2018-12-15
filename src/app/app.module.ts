@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import {HttpClientModule} from '@angular/common/http';
+import { JqueryComponent } from './jquery/jquery.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: ':hero_id', component: HeroDetailComponent}
     ]},
   {path: 'todo', component: TodoComponent},
+  {path: 'jquery', component: JqueryComponent},
 ]
 
 
@@ -26,6 +28,7 @@ const routes: Routes = [
     HeroDetailComponent,
     TodoComponent,
     HomeComponent,
+    JqueryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,41 @@
-<p>
-  todo works!
-</p>
+<form (submit)="addTodo()" #myForm="ngForm">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="할일을 입력하세요."  name="todo" [(ngModel)]="newTodo.todo" required #todo="ngModel">
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!myForm.form.valid">추가</button>
+    </div>
+    <div class="col-12">
+      <div class="alert alert-danger" [hidden]="!todo.dirty || todo.valid">
+        할 일을 입력하세여
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>완료</th>
+    <th>todo</th>
+    <th>생성일</th>
+    <th>수정일</th>
+    <th>삭제</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todoList">
+      <td>{{todo.isFinished}}</td>
+      <td>{{todo.todo}}</td>
+      <td>{{todo.created}}</td>
+      <td>{{todo.updated}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger btn-block">삭제</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
